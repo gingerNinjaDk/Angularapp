@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit } from '@angular/core';
 import { User } from '../../models/User';
 import { stripGeneratedFileSuffix } from '@angular/compiler/src/aot/util';
 
@@ -10,13 +10,18 @@ import { stripGeneratedFileSuffix } from '@angular/compiler/src/aot/util';
 
 })
 
-export class UserComponent
+export class UserComponent implements OnInit
  {
 
   user: User;
 
   // Methods
   constructor() {
+
+
+  }
+
+  ngOnInit () {
     this.user = {
       firstName: 'John',
       lastName: 'Doe',
@@ -27,9 +32,7 @@ export class UserComponent
         state: 'DK'
       }
     }
-
   }
-
 
  }
 

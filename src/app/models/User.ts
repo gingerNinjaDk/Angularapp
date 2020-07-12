@@ -2,11 +2,11 @@ export interface User {
 
   firstName: string,
   lastName: string,
-  age: number,
+  age?: number,   // ? Means optional
   address: {
-    street: string,
-    city: string,
-    state: string
+    street?: string,
+    city?: string,
+    state?: string
   }
 
  }
