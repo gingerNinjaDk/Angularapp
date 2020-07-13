@@ -9,9 +9,9 @@ import { User } from 'src/app/models/User';
 export class UsersComponent implements OnInit {
 
   users: User [];
-  showExtended: boolean = true;
+  showExtended: boolean = false;
   loaded: boolean = true;
-  enableAdd: boolean = false;
+  enableAdd: boolean = true;
 
   constructor() { }
 
@@ -27,7 +27,8 @@ export class UsersComponent implements OnInit {
            city: 'Copenhagen',
            state: 'DK'
          },
-         image: 'https://picsum.photos/200/300'
+         isActive: true,
+         registered: new Date ('01/02/2020 08:30:00')
          },
        {
          firstName: 'Kevin',
@@ -38,7 +39,7 @@ export class UsersComponent implements OnInit {
            city: 'Copenhagen',
            state: 'DK'
          },
-         image: 'https://picsum.photos/200/300'
+         registered: new Date ('01/05/2020 08:30:00')
        },
        {
          firstName: 'Sheila',
@@ -49,27 +50,21 @@ export class UsersComponent implements OnInit {
            city: 'Bridgend',
            state: 'Mid Glam'
          },
-         image: 'https://picsum.photos/200/300'
+         isActive: false,
+         registered: new Date ('04/12/2019 10:48:00')
        }
 
      ];
 
-
-    this.addUser ({
-        firstName: 'Adam',
-        lastName: 'Weismann',
-        age: 51,
-        address: {
-          street: 'Istegade 300'
-        },
-        image: 'https://picsum.photos/200/300'
-      })
 
 
   }
 
   addUser (user: User) {
     this.users.push (user);
+  }
 
+  fireEvent (e) {
+    console.log ('Clicked');
   }
 }

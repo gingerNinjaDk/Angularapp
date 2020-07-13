@@ -8,6 +8,6 @@ export interface User {
     city?: string,
     state?: string
   },
-  image?: string
-
+  isActive?: boolean,
+  registered?: any
  }
