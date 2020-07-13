@@ -11,6 +11,7 @@ export class UsersComponent implements OnInit {
   users: User [];
   showExtended: boolean = true;
   loaded: boolean = true;
+  enableAdd: boolean = false;
 
   constructor() { }
 
@@ -25,8 +26,9 @@ export class UsersComponent implements OnInit {
            street: 'Lillegrund 83',
            city: 'Copenhagen',
            state: 'DK'
-         }
-       },
+         },
+         image: 'https://picsum.photos/200/300'
+         },
        {
          firstName: 'Kevin',
          lastName: 'Doe',
@@ -35,7 +37,8 @@ export class UsersComponent implements OnInit {
            street: 'Lillegrund 81',
            city: 'Copenhagen',
            state: 'DK'
-         }
+         },
+         image: 'https://picsum.photos/200/300'
        },
        {
          firstName: 'Sheila',
@@ -45,7 +48,8 @@ export class UsersComponent implements OnInit {
            street: 'Longacre 300',
            city: 'Bridgend',
            state: 'Mid Glam'
-         }
+         },
+         image: 'https://picsum.photos/200/300'
        }
 
      ];
@@ -57,7 +61,8 @@ export class UsersComponent implements OnInit {
         age: 51,
         address: {
           street: 'Istegade 300'
-        }
+        },
+        image: 'https://picsum.photos/200/300'
       })
 
 
