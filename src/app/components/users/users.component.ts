@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { User } from 'src/app/models/User';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-users',
@@ -18,37 +19,22 @@ export class UsersComponent implements OnInit {
   enableAdd: boolean = false;
   showUserForm: boolean = false;
   @ViewChild('userForm') form: any;
+  data: any;
 
-  constructor() {}
+  constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
     // Lifecycle method (like a trigger)
 
-    this.users = [
-      {
-        firstName: 'John',
-        lastName: 'Doe',
-        email: 'john@doe.com',
-        isActive: true,
-        registered: new Date('01/02/2020 08:30:00'),
-        hide: true,
-      },
-      {
-        firstName: 'Kevin',
-        lastName: 'Doe',
-        email: 'kevin@doe.com',
-        registered: new Date('01/05/2020 08:30:00'),
-        hide: true,
-      },
-      {
-        firstName: 'Sheila',
-        lastName: 'Hollin',
-        email: 'sheila@doe.com',
-        isActive: false,
-        registered: new Date('04/12/2019 10:48:00'),
-        hide: true,
-      },
-    ];
+    this.dataService.getData ().subscribe(data => {
+      console.log (data);
+    });
+
+    this.dataService.getUsers ().subscribe (users => {
+      this.users = users;
+      this.loaded = true;
+    });
+
   }
 
   onSubmit({ value, valid }: { value: User; valid: boolean }) {
@@ -58,8 +44,9 @@ export class UsersComponent implements OnInit {
       value.isActive = true;
       value.registered = new Date();
       value.hide = true;
-      this.users.unshift(value);
+      this.dataService.addUser (value);
       this.form.reset();
+
     }
   }
 }
